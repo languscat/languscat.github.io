@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日暮苍山兰舟安 - 李白诗歌赏析与诗词意境研究</title>
+    <meta name="description" content="日暮苍山兰舟安李白专题页。提供李白《渡荆门送别》全诗原文、白话译文、注释解析及深层文化意象探讨，展现盛唐气象与诗人孤帆远影的壮阔意境。">
+    <meta name="keywords" content="日暮苍山兰舟安,李白,渡荆门送别,全诗赏析,唐诗三百首,盛唐气象">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #8e44ad;
+            --bg-color: #f9f7f2;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --border-color: #e0e0e0;
+            --spacing-unit: 1rem;
+            --container-width: 1000px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "SimSun", serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z" fill="%23ffffff" fill-opacity="0.1" fill-rule="evenodd"/></svg>');
+            opacity: 0.4;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Main Content */
+        main {
+            padding: 3rem 0;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        /* Poem Section */
+        .poem-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        .poem-title {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .poem-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .poem-content {
+            font-size: 1.3rem;
+            line-height: 2.5;
+            text-align: center;
+            color: var(--text-main);
+            margin-bottom: 2rem;
+        }
+
+        .poem-content p {
+            margin-bottom: 1rem;
+        }
+
+        .poem-content .verse {
+            display: block;
+        }
+
+        .poem-content .author {
+            margin-top: 2rem;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            text-align: right;
+        }
+
+        /* Analysis Section */
+        .analysis-section {
+            margin-top: 3rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .analysis-text {
+            text-align: justify;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-box {
+            background-color: #f0f3f8;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin: 2rem 0;
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .highlight-box h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        /* Sidebar */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        .info-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #eee;
+            color: var(--primary-color);
+        }
+
+        .info-list li {
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .info-list span {
+            color: var(--text-secondary);
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: #eee;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #555;
+            transition: all 0.2s;
+        }
+
+        .tag:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: #bdc3c7;
+            padding: 3rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .grid-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                display: none; /* Simplified for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">李白<span>诗选</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#poem">全诗</a></li>
+                    <li><a href="#analysis">赏析</a></li>
+                    <li><a href="#notes">注释</a></li>
+                    <li><a href="#">关于</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>日暮苍山兰舟安</h1>
+            <p>解析李白《渡荆门送别》中的壮丽景色与送别深情</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="grid-layout">
+            <!-- Left Column: Content -->
+            <article>
+                <div class="poem-card" id="poem">
+                    <h2 class="poem-title">渡荆门送别</h2>
+                    <p class="poem-subtitle">唐 · 李白</p>
+                    
+                    <div class="poem-content">
+                        <p class="verse">渡远荆门外，来从楚国游。</p>
+                        <p class="verse">山随平野尽，江入大荒流。</p>
+                        <p class="verse">月下飞天镜，云生结海楼。</p>
+                        <p class="verse">仍怜故乡水，万里送行舟。</p>
+                        <p class="author">—— 李白</p>
+                    </div>
+                </div>
+
+                <section class="analysis-section" id="analysis">
+                    <h3 class="section-title">诗词赏析</h3>
+                    <div class="analysis-text">
+                        <p>《渡荆门送别》是唐代大诗人李白青年时期出蜀（今四川）时创作的一首五言律诗，被选入《唐诗三百首》。诗题中的“送别”并非实指送别友人，而是写诗人乘船远行，离开蜀地，对故乡的眷恋之情。</p>
+                        <p>首联“渡远荆门外，来从楚国游”，交代了行踪。诗人离开蜀地，渡过荆门（今湖北宜都县西北长江南岸），来到楚地游历。开篇点题，境界开阔。</p>
+                        <p>颔联“山随平野尽，江入大荒流”是千古传诵的名句。诗人笔锋一转，不再写具体景物，而是以高度凝练的语言描绘了船行过程中的动态美感。随着船行，原本起伏的山峦逐渐消失在视野中，取而代之的是一望无际的平原；长江浩浩荡荡，奔向渺茫无际的荒野。这一联写出了从高山到平原、从有形到无形的空间转换，展现了诗人初出蜀地时胸襟的开阔与豪迈。</p>
+                        <p>颈联“月下飞天镜，云生结海楼”描写了江上的夜景。月亮倒映在清澈的江水中，宛如天上飞下的明镜；江面上云雾升腾，变幻出海市蜃楼般的景象。这两句运用比喻和想象，将自然景观写得如梦似幻，极富浪漫主义色彩。</p>
+                        <p>尾联“仍怜故乡水，万里送行舟”表达了诗人对故乡的依依惜别之情。虽然眼前是壮丽的景色，但诗人却觉得故乡的水是那样深情，仿佛在万里之外护送自己的行舟。这种拟人化的手法，将抽象的思乡之情具体化，余味无穷。</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <h3>意境总结</h3>
+                        <p>整首诗气势雄浑，意境壮丽。诗人以轻快的笔调，描绘了出蜀入楚时的壮丽景色，抒发了对故乡的无限眷恋。诗中既有对自然美景的热爱，又有对未来的憧憬，是李白早期浪漫主义诗歌的代表作之一。</p>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Right Column: Sidebar -->
+            <aside>
+                <div class="info-card" id="notes">
+                    <h3>基本信息</h3>
+                    <ul class="info-list">
+                        <li>体裁：<span>五言律诗</span></li>
+                        <li>朝代：<span>唐代</span></li>
+                        <li>作者：<span>李白</span></li>
+                        <li>出处：<span>《唐诗三百首》</span></li>
+                        <li>创作背景：<span>青年时期出蜀游历</span></li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>重点字词</h3>
+                    <ul class="info-list">
+                        <li>荆门：<span>山名，位于长江沿岸</span></li>
+                        <li>平野：<span>平坦广阔的原野</span></li>
+                        <li>大荒：<span>广阔无边的原野</span></li>
+                        <li>海楼：<span>海市蜃楼</span></li>
+                        <li>怜：<span>爱，惜</span></li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>相关标签</h3>
+                    <div class="tag-cloud">
+                        <a href="#" class="tag">盛唐</a>
+                        <a href="#" class="tag">浪漫主义</a>
+                        <a href="#" class="tag">山水诗</a>
+                        <a href="#" class="tag">李白</a>
+                        <a href="#" class="tag">唐诗</a>
+                        <a href="#" class="tag">长江</a>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3>同类推荐</h3>
+                    <ul class="info-list">
+                        <li><a href="#">《黄鹤楼送孟浩然之广陵》</a></li>
+                        <li><a href="#">《早发白帝城》</a></li>
+                        <li><a href="#">《望庐山瀑布》</a></li>
+                        <li><a href="#">《蜀道难》</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>弘扬中华优秀传统文化 · 诗词鉴赏平台</p>
+            <p>&copy; 2023 古诗词鉴赏网. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</body>
+</html>
