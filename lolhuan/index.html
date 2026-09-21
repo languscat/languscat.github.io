@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LOL换肤站提供英雄联盟手游与端游皮肤预览、背景故事解析、获取攻略及正版授权渠道推荐，帮助玩家选择心仪皮肤。">
+    <meta name="keywords" content="lol换肤,英雄联盟皮肤,LOL手游皮肤,皮肤预览,LOL攻略">
+    <title>lol换肤-英雄联盟皮肤预览与获取攻略指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary: #00f0ff;
+            --secondary: #7000ff;
+            --bg-dark: #0f0f13;
+            --bg-card: #1a1a24;
+            --text-main: #ffffff;
+            --text-sub: #a0a0b0;
+            --border: #2d2d3d;
+            --radius: 12px;
+            --container: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(15, 15, 19, 0.95);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-sub);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 8px 15px;
+            border-radius: 20px;
+            color: var(--text-main);
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: 80px 0;
+            background: radial-gradient(circle at top center, rgba(112, 0, 255, 0.15), transparent 70%);
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-sub);
+            margin-bottom: 40px;
+        }
+
+        .hero-tags span {
+            display: inline-block;
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            margin: 0 5px 10px;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+        }
+
+        /* Filter Bar */
+        .filter-bar {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-sub);
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: #000;
+            border-color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Grid Layout */
+        .grid-section {
+            padding: 40px 0 80px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .skin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .skin-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .skin-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
+            border-color: var(--primary);
+        }
+
+        .card-img-wrapper {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .skin-card:hover .card-img-wrapper img {
+            transform: scale(1.1);
+        }
+
+        .rarity-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .rarity-epic { background: rgba(168, 85, 247, 0.8); color: #fff; }
+        .rarity-legendary { background: rgba(251, 191, 36, 0.8); color: #000; }
+        .rarity-mythic { background: linear-gradient(45deg, #f59e0b, #ef4444); color: #fff; }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-champion {
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+
+        .card-actions {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price-tag {
+            font-size: 14px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .view-btn {
+            font-size: 12px;
+            color: var(--text-sub);
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+
+        .view-btn:hover {
+            color: var(--text-main);
+            border-color: var(--text-main);
+        }
+
+        /* Info Section */
+        .info-section {
+            background: #16161e;
+            padding: 60px 0;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .info-content h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .info-content p {
+            color: var(--text-sub);
+            margin-bottom: 20px;
+        }
+
+        .info-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: var(--text-sub);
+        }
+
+        .check-icon {
+            color: var(--primary);
+            margin-top: 3px;
+        }
+
+        .info-visual {
+            background: linear-gradient(135deg, var(--bg-card), #2a2a35);
+            padding: 40px;
+            border-radius: var(--radius);
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .info-visual img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0d;
+            padding: 40px 0 20px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-sub);
+            font-size: 13px;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            margin: 0 10px;
+        }
+
+        .disclaimer {
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 32px; }
+            .info-grid { grid-template-columns: 1fr; }
+            .skin-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo">LOL换肤</div>
+            <nav class="nav-links">
+                <a href="#" class="active">皮肤大全</a>
+                <a href="#">皮肤攻略</a>
+                <a href="#">英雄图鉴</a>
+                <a href="#">视频预览</a>
+                <a href="#">社区讨论</a>
+            </nav>
+            <div class="search-box">
+                <input type="text" placeholder="搜索英雄或皮肤名称...">
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>探索英雄联盟皮肤世界<br>为你的英雄换上全新战衣</h1>
+                <p>汇集LOL端游与手游最新、最全的皮肤预览。从炫酷特效到华丽动画，助你找到最契合本命英雄的皮肤。</p>
+                <div class="hero-tags">
+                    <span>#2024新皮肤</span>
+                    <span>#限定返场</span>
+                    <span>#国风系列</span>
+                    <span>#机甲系列</span>
+                    <span>#节日限定</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- Filter -->
+            <div class="filter-bar">
+                <button class="filter-btn active">全部</button>
+                <button class="filter-btn">热门推荐</button>
+                <button class="filter-btn">传说级</button>
+                <button class="filter-btn">史诗级</button>
+                <button class="filter-btn">精良级</button>
+                <button class="filter-btn">2024</button>
+                <button class="filter-btn">2023</button>
+            </div>
+
+            <!-- Featured Section -->
+            <section class="grid-section">
+                <div class="section-title">本周热门推荐</div>
+                <div class="skin-grid">
+                    <!-- Card 1 -->
+                    <article class="skin-card">
+                        <div class="card-img-wrapper">
+                            <span class="rarity-badge rarity-mythic">神话</span>
+                            <img src="https://picsum.photos/seed/lol1/300/400" alt="永恩 神话传说皮肤">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">永恩 - 暮光星灵</h3>
+                            <p class="card-champion">The Ascended One</p>
+                            <div class="card-actions">
+                                <span class="price-tag">神话系列</span>
+                                <a href="#" class="view-btn">查看详情</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="skin-card">
+                        <div class="card-img-wrapper">
+                            <span class="rarity-badge rarity-legendary">传说</span>
+                            <img src="https://picsum.photos/seed/lol2/300/400" alt="亚索 暗夜猎手">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">亚索 - 暗夜猎手</h3>
+                            <p class="card-champion">The Unforgiven</p>
+                            <div class="card-actions">
+                                <span class="price-tag">传说级</span>
+                                <a href="#" class="view-btn">查看详情</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article class="skin-card">
+                        <div class="card-img-wrapper">
+                            <span class="rarity-badge rarity-epic">史诗</span>
+                            <img src="https://picsum.photos/seed/lol3/300/400" alt="金克丝 星之守护者">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">金克丝 - 星之守护者</h3>
+                            <p class="card-champion">The Loose Cannon</p>
+                            <div class="card-actions">
+                                <span class="price-tag">史诗级</span>
+                                <a href="#" class="view-btn">查看详情</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 4 -->
+                    <article class="skin-card">
+                        <div class="card-img-wrapper">
+                            <span class="rarity-badge rarity-legendary">传说</span>
+                            <img src="https://picsum.photos/seed/lol4/300/400" alt="阿狸 灵魂莲华">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">阿狸 - 灵魂莲华</h3>
+                            <p class="card-champion">The Nine-Tailed Fox</p>
+                            <div class="card-actions">
+                                <span class="price-tag">传说级</span>
+                                <a href="#" class="view-btn">查看详情</a>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Card 5 -->
+                    <article class="skin-card">
+                        <div class="card-img-wrapper">
+                            <span class="rarity-badge rarity-epic">史诗</span>
+                            <img src="https://picsum.photos/seed/lol5/300/400" alt="李青 战地机甲">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">李青 - 战地机甲</h3>
+                            <p class="card-champion">The Blind Monk</p>
+                            <div class="card-actions">
+                                <span class="price-tag">史诗级</span>
+                                <a href="#" class="view-btn">查看详情</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 6 -->
+                    <article class="skin-card">
+                        <div class="card-img-wrapper">
+                            <span class="rarity-badge rarity-legendary">传说</span>
+                            <img src="https://picsum.photos/seed/lol6/300/400" alt="瑞文 傲世剑仙">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">瑞文 - 傲世剑仙</h3>
+                            <p class="card-champion">The Exile</p>
+                            <div class="card-actions">
+                                <span class="price-tag">传说级</span>
+                                <a href="#" class="view-btn">查看详情</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+
+        <!-- Info Section -->
+        <section class="info-section">
+            <div class="container info-grid">
+                <div class="info-content">
+                    <h2>如何选择适合你的LOL皮肤？</h2>
+                    <p>皮肤不仅是视觉上的享受，合理的搭配能提升操作手感。本站提供详细的皮肤特效解析、获取难度评估以及性价比分析。</p>
+                    <ul class="info-list">
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <div>
+                                <strong>视觉特效分析</strong><br>
+                                详细展示技能释放时的粒子效果与音效变化。
+                            </div>
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <div>
+                                <strong>手感与流畅度</strong><br>
+                                收集玩家反馈，整理不同皮肤的打击感和施法速度。
+                            </div>
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <div>
+                                <strong>获取渠道与价格</strong><br>
+                                提供官方商店、活动直售及周边购买指南。
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="info-visual">
+                    <img src="https://picsum.photos/seed/lolart/600/400" alt="皮肤展示">
+                    <p style="font-size: 14px; color: var(--text-sub);">点击查看大图详情</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">关于我们</a>
+                <a href="#">免责声明</a>
+                <a href="#">联系合作</a>
+                <a href="#">隐私政策</a>
+            </div>
+            <p class="disclaimer">
+                本站为LOL换肤爱好者提供信息展示与攻略整理，所有游戏素材版权归 Riot Games 及其相关方所有。<br>
+                本站不提供任何游戏内道具下载或非法代充服务。
+            </p>
+            <p style="margin-top: 15px; font-size: 12px;">&copy; 2024 LOL换肤指南. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
