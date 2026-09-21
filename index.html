@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的前任3-深度影评与经典台词回顾</title>
+    <meta name="description" content="我的前任3：再见孟云再见林佳。深度解析电影情感内核，经典台词集锦，角色心理分析，以及关于爱情、成长与告别的思考指南。">
+    <meta name="keywords" content="我的前任3, 孟云林佳, 电影影评, 经典台词, 爱情电影, 影视推荐">
+    <style>
+        :root {
+            --primary-color: #e91e63;
+            --secondary-color: #f48fb1;
+            --text-dark: #333333;
+            --text-gray: #666666;
+            --bg-light: #f9f9f9;
+            --white: #ffffff;
+            --border-radius: 12px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 1rem;
+            color: var(--text-dark);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #d81b60;
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            backdrop-filter: blur(5px);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Section Styles */
+        section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+            display: inline-block;
+        }
+
+        /* Article Content */
+        article {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .article-meta {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5em;
+            text-align: justify;
+        }
+
+        .article-content h2 {
+            font-size: 1.5rem;
+            margin: 2em 0 1em;
+            color: var(--text-dark);
+        }
+
+        .highlight-box {
+            background-color: #fce4ec;
+            border-left: 5px solid var(--primary-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        /* Character Analysis Grid */
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .char-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .char-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .char-avatar {
+            width: 80px;
+            height: 80px;
+            background-color: #eee;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            overflow: hidden;
+        }
+        
+        .char-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .char-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .char-role {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        /* Quotes Section */
+        .quotes-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .quote-item {
+            background: var(--white);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .quote-item::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--secondary-color);
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            opacity: 0.5;
+            font-family: serif;
+        }
+
+        .quote-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .quote-source {
+            text-align: right;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Sidebar */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .sidebar-widget {
+            background: var(--white);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .sidebar-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .topics-list li {
+            margin-bottom: 10px;
+        }
+
+        .topics-list a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .topics-list a:hover {
+            background: #fce4ec;
+            color: var(--primary-color);
+        }
+
+        .count {
+            background: #eee;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #ccc;
+            padding: 50px 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav-container">
+        <a href="#" class="logo">
+            <span>🎬</span> 我的前任3
+        </a>
+        <nav class="nav-links">
+            <a href="#movie-info">影片简介</a>
+            <a href="#analysis">深度分析</a>
+            <a href="#quotes">经典台词</a>
+            <a href="#community">社区讨论</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>再见孟云，再见林佳</h1>
+            <p>一部关于成长、遗憾与放手的爱情寓言。走进《我的前任3》，重温那些我们曾以为过不去的坎。</p>
+            <div class="hero-tags">
+                <span class="tag">爱情片</span>
+                <span class="tag">喜剧</span>
+                <span class="tag">治愈系</span>
+                <span class="tag">豆瓣高分</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Movie Info -->
+            <article id="movie-info">
+                <h2 class="section-title">影片简介</h2>
+                <div class="article-content">
+                    <p>《我的前任3》是2017年上映的一部中国爱情喜剧电影，由丁梓光执导，韩庚、郑恺、于文文领衔主演。影片聚焦于都市男女孟云（韩庚 饰）和林佳（于文文 饰）长达七年的感情历程，特别是两人分手前后的心理变化与生活状态。</p>
+                    <div class="highlight-box">
+                        <p><strong>核心主题：</strong> 电影并没有停留在单纯的分手剧情上，而是深入探讨了“为什么相爱的人会分开”。它揭示了沟通方式的错位、自我成长的滞后以及面对承诺时的无力感。影片通过孟云和林佳的对比，展现了两种不同的处理分手的方式：一种是试图挽回的挣扎，另一种是自我放逐的绝望。</p>
+                    </div>
+                    <p>影片在轻松幽默的基调中穿插着细腻的情感戏份，尤其是于文文演唱的主题曲《体面》成为了许多观众心中的“分手神曲”，引发了广泛的情感共鸣。</p>
+                </div>
+            </article>
+
+            <!-- Character Analysis -->
+            <article id="analysis">
+                <h2 class="section-title">角色心理深度解析</h2>
+                <div class="article-content">
+                    <p>影片之所以动人，在于它塑造了两个真实而复杂的角色。</p>
+                    
+                    <div class="character-grid">
+                        <div class="char-card">
+                            <div class="char-avatar">
+                                <img src="https://picsum.photos/seed/mengyun/100/100" alt="孟云">
+                            </div>
+                            <h3 class="char-name">孟云</h3>
+                            <p class="char-role">男，27岁</p>
+                            <p style="font-size: 0.9rem; color: #666;">性格有些大条，习惯性回避冲突。他的分手方式是“假装释怀”，通过疯狂消费和新的恋情来麻痹自己，实则内心极其痛苦。他的成长在于学会直面自己的恐惧。</p>
+                        </div>
+                        <div class="char-card">
+                            <div class="char-avatar">
+                                <img src="https://picsum.photos/seed/linjia/100/100" alt="林佳">
+                            </div>
+                            <h3 class="char-name">林佳</h3>
+                            <p class="char-role">女，27岁</p>
+                            <p style="font-size: 0.9rem; color: #666;">敏感细腻，缺乏安全感。她的分手方式是“自我惩罚”，通过绝食和极端的宣泄来结束这段关系。她的成长在于明白自尊自爱才是长久之计。</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Quotes Section -->
+            <article id="quotes">
+                <h2 class="section-title">经典台词回顾</h2>
+                <div class="article-content">
+                    <div class="quotes-list">
+                        <div class="quote-item">
+                            <p class="quote-text">“我以为我会很难过，但真正发生的时候，我才发现，原来难过是分阶段的。”</p>
+                            <p class="quote-source">—— 孟云</p>
+                        </div>
+                        <div class="quote-item">
+                            <p class="quote-text">“我们之间，不是不爱了，是爱不动了。”</p>
+                            <p class="quote-source">—— 林佳</p>
+                        </div>
+                        <div class="quote-item">
+                            <p class="quote-text">“那个曾经说要跟我过一辈子的人，最后还是弄丢在岁月里了。”</p>
+                            <p class="quote-source">—— 旁白</p>
+                        </div>
+                        <div class="quote-item">
+                            <p class="quote-text">“如果真的有来生，我希望我们能早点遇到，早点学会如何去爱。”</p>
+                            <p class="quote-source">—— 观影者感悟</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <!-- Sidebar -->
+        <aside>
+            <div class="sidebar-widget">
+                <h3 class="sidebar-title">热门话题</h3>
+                <ul class="topics-list">
+                    <li><a href="#"><span>孟云扮至尊宝</span> <span class="count">2.3k</span></a></li>
+                    <li><a href="#"><span>林佳吃芒果过敏</span> <span class="count">1.8k</span></a></li>
+                    <li><a href="#"><span>体面歌词含义</span> <span class="count">1.5k</span></a></li>
+                    <li><a href="#"><span>前任3结局解析</span> <span class="count">980</span></a></li>
+                    <li><a href="#"><span>致前任的一封信</span> <span class="count">750</span></a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3 class="sidebar-title">相关推荐</h3>
+                <ul class="topics-list">
+                    <li><a href="#"><span>前任4：英年早婚</span></a></li>
+                    <li><a href="#"><span>那些年，我们一起追的女孩</span></a></li>
+                    <li><a href="#"><span>爱乐之城</span></a></li>
+                    <li><a href="#"><span>爱在黎明破晓前</span></a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3 class="sidebar-title">阅读指南</h3>
+                <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">
+                    本页面收录了关于电影《我的前任3》的深度影评、角色分析及经典台词。适合正在经历情感波动的观众阅读，也适合想要回顾经典爱情电影的影迷。
+                </p>
+                <a href="#community" style="color: var(--primary-color); font-weight: bold; display: block; text-align: center; margin-top: 10px;">参与讨论 &rarr;</a>
+            </div>
+        </aside>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-links">
+            <a href="#">关于我们</a>
+            <a href="#">免责声明</a>
+            <a href="#">联系合作</a>
+            <a href="#">隐私政策</a>
+        </div>
+        <p class="copyright">
+            &copy; 2023 我的前任3 影视纪念站. All rights reserved.<br>
+            本站内容仅供学习交流与回忆，不涉及任何商业利益。
+        </p>
+    </div>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</body>
+</html>
