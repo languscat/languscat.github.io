@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="辐射4控制台指令大全，包含全屏模式、物品代码、人物修改及作弊码使用教程，助您快速掌握游戏操作技巧。">
+    <meta name="keywords" content="辐射4控制台, 辐射4指令, 辐射4作弊码, 辐射4物品代码, 辐射4修改">
+    <title>辐射4控制台-全指令代码与修改器使用指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --bg-color: #1a1a1c;
+            --card-bg: #2b2b30;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --accent-color: #007acc;
+            --accent-hover: #005f9e;
+            --border-color: #3e3e42;
+            --code-bg: #111;
+            --code-text: #569cd6;
+            --success-color: #4caf50;
+            --warning-color: #ff9800;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 头部导航 */
+        header {
+            background-color: rgba(26, 26, 28, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-color);
+        }
+
+        /* Hero 区域 */
+        .hero {
+            padding: 60px 0;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(0, 122, 204, 0.1) 0%, var(--bg-color) 100%);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* 基础操作指南 */
+        .section {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 32px;
+            padding-left: 12px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            border-color: var(--accent-color);
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+            font-size: 1.25rem;
+            color: var(--text-main);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+        }
+
+        .code-block {
+            background-color: var(--code-bg);
+            padding: 12px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: var(--code-text);
+            font-size: 0.9rem;
+            overflow-x: auto;
+            border-left: 3px solid var(--accent-color);
+        }
+
+        /* 物品代码表格 */
+        .table-container {
+            overflow-x: auto;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 16px 24px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: rgba(0, 0, 0, 0.2);
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        td {
+            color: var(--text-muted);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .copy-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        /* 常见问题 */
+        .faq-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            margin-bottom: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .faq-question:hover {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-muted);
+            display: none;
+            border-top: 1px solid transparent;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+            padding-top: 16px;
+            border-top-color: var(--border-color);
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        .faq-item:not(.active) .faq-question::after {
+            content: '+';
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #111;
+            padding: 40px 0;
+            margin-top: 60px;
+            text-align: center;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                flex-direction: column;
+                height: auto;
+                padding: 16px 0;
+                gap: 16px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: 40px 0;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            th, td {
+                padding: 12px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                <span>FO4指令库</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#intro" class="active">基础操作</a></li>
+                    <li><a href="#codes">物品代码</a></li>
+                    <li><a href="#items">强力装备</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>辐射4控制台指令大全</h1>
+                <p>掌握控制台代码，解锁全屏模式、修改数值、获取神级装备，轻松享受废土冒险。</p>
+                <div class="hero-tags">
+                    <span class="tag">F11 全屏</span>
+                    <span class="tag">player.additem</span>
+                    <span class="tag">godmode</span>
+                    <span class="tag">tgm</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 基础操作指南 -->
+        <section id="intro" class="section">
+            <div class="container">
+                <h2 class="section-title">基础操作指南</h2>
+                <div class="guide-grid">
+                    <article class="card">
+                        <h3>1. 开启控制台</h3>
+                        <p>在游戏画面中，按下键盘上的 <strong>[</strong> 键（通常位于左上角数字键1下方）打开控制台。再次按下即可关闭。</p>
+                        <div class="code-block">~ 或 [</div>
+                    </article>
+                    <article class="card">
+                        <h3>2. 选中目标</h3>
+                        <p>开启控制台后，点击游戏内的角色、物品或建筑即可选中。选中后会出现绿色数字编号。</p>
+                        <div class="code-block">点击目标物体</div>
+                    </article>
+                    <article class="card">
+                        <h3>3. 常用命令</h3>
+                        <p>输入指令后按回车执行。最常用的包括无敌模式、穿墙模式等。</p>
+                        <div class="code-block">tgm (开启无敌与隐身)<br>tm (关闭HUD界面)</div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 物品代码 -->
+        <section id="codes" class="section">
+            <div class="container">
+                <h2 class="section-title">常用物品代码</h2>
+                <p style="margin-bottom: 20px; color: var(--text-muted);">在控制台输入 <code>player.additem [代码] [数量]</code> 即可获得物品。</p>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>物品名称</th>
+                                <th>代码</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>动力装甲 (T-51b)</td>
+                                <td><code>00123bfa</code></td>
+                                <td>包含头盔与防弹衣</td>
+                            </tr>
+                            <tr>
+                                <td>聚变核心</td>
+                                <td><code>00123bc9</code></td>
+                                <td>动力装甲燃料</td>
+                            </tr>
+                            <tr>
+                                <td>火箭发射器</td>
+                                <td><code>000641a2</code></td>
+                                <td>重型武器</td>
+                            </tr>
+                            <tr>
+                                <td>激光步枪</td>
+                                <td><code>000a4326</code></td>
+                                <td>标准步枪</td>
+                            </tr>
+                            <tr>
+                                <td>联邦大炮</td>
+                                <td><code>000511c9</code></td>
+                                <td>传说级武器</td>
+                            </tr>
+                            <tr>
+                                <td>生锈的枪械</td>
+                                <td><code>0018f279</code></td>
+                                <td>低级武器</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 强力装备推荐 -->
+        <section id="items" class="section">
+            <div class="container">
+                <h2 class="section-title">传说级装备代码</h2>
+                <p style="margin-bottom: 20px; color: var(--text-muted);">输入代码直接获得带有特殊属性的传说装备。</p>
+                <div class="guide-grid">
+                    <div class="card">
+                        <h3>毁灭者动力装甲</h3>
+                        <div class="code-block">00123bfa</div>
+                        <p>拥有全游戏最高的护甲值，自带火焰喷射器，对敌人造成持续伤害。</p>
+                    </div>
+                    <div class="card">
+                        <h3>自动步枪 (传说)</h3>
+                        <div class="code-block">0009f1a8</div>
+                        <p>传奇自动步枪，拥有高射速和精准度，适合中远距离战斗。</p>
+                    </div>
+                    <div class="card">
+                        <h3>传奇狙击步枪</h3>
+                        <div class="code-block">0008f2db</div>
+                        <p>高伤害、高暴击倍率，是远程点杀精英怪物的利器。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 常见问题 -->
+        <section id="faq" class="section">
+            <div class="container">
+                <h2 class="section-title">常见问题 (FAQ)</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">控制台打不开怎么办？</div>
+                        <div class="faq-answer">请确保你没有处于全屏游戏模式。如果是全屏，请先按 Alt+Tab 切换到桌面，然后再按 [ 键。部分游戏版本可能需要在游戏设置中开启控制台支持。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">代码输入后没有反应？</div>
+                        <div class="faq-answer">请检查是否正确选中了目标物体。如果是对玩家使用，请确保指令前缀正确（如 <code>player.</code>），且数量为正整数。部分代码可能需要重启游戏才能生效。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">如何关闭无敌模式？</div>
+                        <div class="faq-answer">在控制台输入 <code>tmm 1</code> 开启，输入 <code>tmm 0</code> 关闭。输入 <code>tgm</code> 则是切换开关。</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>本站提供《辐射4》控制台指令查询服务，仅供学习与交流使用。</p>
+            <p>&copy; 2023 辐射4指令库 - 废土探险者社区</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ折叠逻辑
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // 关闭其他已打开的项
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // 切换当前项
+                    item.classList.toggle('active');
+                });
+            });
+
+            // 简单的平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
