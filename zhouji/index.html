@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>洲际 - 全球领先的航空旅行与机场服务门户</title>
+    <meta name="description" content="洲际机场服务与航空资讯门户，提供全球主要机场航班动态、中转服务指南、航空旅行技巧及机场商业资讯。">
+    <meta name="keywords" content="洲际,机场,航空,航班查询,机场服务,中转,航空资讯">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #003366; /* 航空深蓝 */
+            --accent-color: #ff6600; /* 航空橙 */
+            --text-dark: #1a1a1a;
+            --text-gray: #666666;
+            --bg-light: #f4f7f9;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 顶部导航 */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-dark);
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-actions .btn {
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+            margin-right: 10px;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #002244;
+        }
+
+        /* Hero 区域 */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #001f3f 100%);
+            color: var(--white);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .hero-search {
+            background: var(--white);
+            padding: 10px;
+            border-radius: 50px;
+            display: flex;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            max-width: 500px;
+        }
+
+        .hero-search input {
+            flex: 1;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            outline: none;
+            border-radius: 50px 0 0 50px;
+        }
+
+        .hero-search button {
+            background-color: var(--accent-color);
+            color: var(--white);
+            border: none;
+            padding: 0 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            position: relative;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.5s ease;
+        }
+
+        .hero-image:hover img {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        /* 统计数据条 */
+        .stats-bar {
+            background: var(--white);
+            margin-top: -40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            display: flex;
+            justify-content: space-around;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        /* 主要内容区 */
+        main {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+        }
+
+        .section-title h2 {
+            font-size: 28px;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-gray);
+        }
+
+        .section-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* 机场列表网格 */
+        .airport-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .airport-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .airport-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-color: rgba(0, 51, 102, 0.1);
+        }
+
+        .card-img {
+            height: 160px;
+            width: 100%;
+            object-fit: cover;
+            background-color: #eee;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+
+        .card-info {
+            font-size: 13px;
+            color: var(--text-gray);
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .card-tag {
+            background-color: #eef2f5;
+            color: #555;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+
+        /* 服务专区 */
+        .services-section {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: var(--shadow);
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .service-item {
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+
+        .service-item:hover {
+            background-color: #f8fbff;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+            fill: var(--primary-color);
+        }
+
+        .service-name {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .service-desc {
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+
+        /* 航空资讯 */
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .news-item {
+            display: flex;
+            background: var(--white);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            align-items: center;
+        }
+
+        .news-date {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 15px;
+            border-radius: 8px;
+            text-align: center;
+            min-width: 70px;
+            margin-right: 20px;
+        }
+
+        .news-date .day {
+            display: block;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .news-date .month {
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        .news-content h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .news-content h3 a:hover {
+            color: var(--accent-color);
+        }
+
+        .news-content p {
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        /* 常见问题 */
+        .faq-section {
+            background-color: var(--white);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 20px;
+            color: var(--primary-color);
+        }
+
+        .faq-answer {
+            color: var(--text-gray);
+            font-size: 14px;
+            display: none;
+            padding-left: 10px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #001f3f;
+            color: #ccc;
+            padding: 60px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            color: var(--white);
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text {
+                margin-bottom: 40px;
+            }
+
+            .hero-search {
+                margin: 0 auto;
+            }
+
+            .hero-image {
+                display: none;
+            }
+
+            .stats-bar {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* 移动端简化：隐藏菜单 */
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .airport-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .news-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .news-date {
+                margin-right: 0;
+                margin-bottom: 10px;
+                display: inline-block;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-brand p {
+                margin: 0 auto 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M21,16V14L13,9V3.5A1.5,1.5 0 0,0 11.5,2A1.5,1.5 0 0,0 10,3.5V9L2,14V16L10,13.5V19L8,20.5V22L11.5,21L15,22V20.5L13,19V13.5L21,16Z" />
+                </svg>
+                洲际<span>Travel</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#">机场首页</a>
+                <a href="#">航班查询</a>
+                <a href="#">中转服务</a>
+                <a href="#">机场交通</a>
+                <a href="#">会员中心</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="btn btn-outline">登录</button>
+                <button class="btn btn-primary">注册</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>连接全球，从这里出发</h1>
+                <p>洲际为您提供全球主要机场的实时航班动态、中转指南及一站式出行服务解决方案。</p>
+                <div class="hero-search">
+                    <input type="text" placeholder="输入机场名称或城市（如：北京、浦东）...">
+                    <button>搜索</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://picsum.photos/seed/airport/600/400" alt="现代国际机场外观" width="600" height="400">
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-number">500+</span>
+                <span class="stat-label">合作机场</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">10亿+</span>
+                <span class="stat-label">年旅客吞吐量</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">120+</span>
+                <span class="stat-label">服务国家</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">实时客服</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <!-- 热门机场板块 -->
+        <section>
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>热门枢纽机场</h2>
+                    <p>探索全球最具影响力的航空枢纽，获取最新的航班资讯</p>
+                </div>
+                <a href="#" class="section-link">查看全部机场 &rarr;</a>
+            </div>
+            <div class="airport-grid">
+                <article class="airport-card">
+                    <img src="https://picsum.photos/seed/pudong/400/250" alt="上海浦东国际机场" class="card-img">
+                    <div class="card-body">
+                        <h3 class="card-title">上海浦东国际机场</h3>
+                        <div class="card-info">
+                            <span>中国, 上海</span>
+                            <span class="card-tag">国际枢纽</span>
+                        </div>
+                        <p class="card-desc">中国最大的航空枢纽之一，连接全球超过200个目的地，提供便捷的中转服务与奢华的候机体验。</p>
+                    </div>
+                </article>
+                <article class="airport-card">
+                    <img src="https://picsum.photos/seed/haneda/400/250" alt="东京羽田机场" class="card-img">
+                    <div class="card-body">
+                        <h3 class="card-title">东京羽田机场</h3>
+                        <div class="card-info">
+                            <span>日本, 东京</span>
+                            <span class="card-tag">国内/国际</span>
+                        </div>
+                        <p class="card-desc">距离市中心最近的国际机场，拥有高效的交通网络和丰富的免税购物选择。</p>
+                    </div>
+                </article>
+                <article class="airport-card">
+                    <img src="https://picsum.photos/seed/dubai/400/250" alt="迪拜国际机场" class="card-img">
+                    <div class="card-body">
+                        <h3 class="card-title">迪拜国际机场</h3>
+                        <div class="card-info">
+                            <span>阿联酋, 迪拜</span>
+                            <span class="card-tag">中东枢纽</span>
+                        </div>
+                        <p class="card-desc">全球最繁忙的机场之一，以奢华的购物环境、顶级的餐饮服务和超长的直飞航线著称。</p>
+                    </div>
+                </article>
+                <article class="airport-card">
+                    <img src="https://picsum.photos/seed/losangeles/400/250" alt="洛杉矶国际机场" class="card-img">
+                    <div class="card-body">
+                        <h3 class="card-title">洛杉矶国际机场</h3>
+                        <div class="card-info">
+                            <span>美国, 洛杉矶</span>
+                            <span class="card-tag">北美门户</span>
+                        </div>
+                        <p class="card-desc">通往美洲的门户，拥有独特的艺术装饰建筑风格，提供通往加州各大景点的便捷服务。</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 服务板块 -->
+        <section>
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>出行服务指南</h2>
+                    <p>从值机到登机，全方位的机场服务支持</p>
+                </div>
+            </div>
+            <div class="services-section">
+                <div class="service-grid">
+                    <div class="service-item">
+                        <svg class="service-icon" viewBox="0 0 24 24">
+                            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z" />
+                        </svg>
+                        <h4 class="service-name">航班动态</h4>
+                        <p class="service-desc">实时追踪航班起降状态，延误与取消通知</p>
+                    </div>
+                    <div class="service-item">
+                        <svg class="service-icon" viewBox="0 0 24 24">
+                            <path d="M12,3L2,12H5V20H19V12H22L12,3M12,5.84L18.16,12H16V18H8V12H5.84L12,5.84Z" />
+                        </svg>
+                        <h4 class="service-name">中转服务</h4>
+                        <p class="service-desc">免签中转、酒店休息与行李直挂服务</p>
+                    </div>
+                    <div class="service-item">
+                        <svg class="service-icon" viewBox="0 0 24 24">
+                            <path d="M18.92,6.01C18.72,5.42 18.16,5 17.5,5H6.5C5.84,5 5.28,5.42 5.08,6.01L3,12V20A1,1 0 0,0 4,21H6A1,1 0 0,0 7,20V18H17V20A1,1 0 0,0 18,21H20A1,1 0 0,0 21,20V12L18.92,6.01M6.85,7H17.14L18.22,10H5.78L6.85,7M19,18H5V12.91L10,13.86V16A1,1 0 0,0 11,17H13A1,1 0 0,0 14,16V13.86L19,12.91V18Z" />
+                        </svg>
+                        <h4 class="service-name">机场交通</h4>
+                        <p class="service-desc">地铁、巴士与出租车时刻表查询</p>
+                    </div>
+                    <div class="service-item">
+                        <svg class="service-icon" viewBox="0 0 24 24">
+                            <path d="M20,6H16V4A2,2 0 0,0 14,2H10A2,2 0 0,0 8,4V6H4C2.89,6 2,6.89 2,8V19A2,2 0 0,0 4,21H20A2,2 0 0,0 22,19V8C22,6.89 21.1,6 20,6M10,4H14V6H10V4M20,19H4V8H20V19Z" />
+                        </svg>
+                        <h4 class="service-name">值机选座</h4>
+                        <p class="service-desc">在线办理登机牌，选择舒适座位</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 资讯与FAQ -->
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px;">
+            <section>
+                <div class="section-title">
+                    <h2>最新航空资讯</h2>
+                </div>
+                <div class="news-list">
+                    <article class="news-item">
+                        <div class="news-date">
+                            <span class="day">15</span>
+                            <span class="month">OCT</span>
+                        </div>
+                        <div class="news-content">
+                            <h3><a href="#">洲际航空联盟宣布新增三条跨洲航线</a></h3>
+                            <p>为了应对日益增长的亚洲市场需求，联盟成员航司将于下月开通北京至伦敦、东京至纽约的直飞服务...</p>
+                        </div>
+                    </article>
+                    <article class="news-item">
+                        <div class="news-date">
+                            <span class="day">12</span>
+                            <span class="month">OCT</span>
+                        </div>
+                        <div class="news-content">
+                            <h3><a href="#">关于机场安检新规的温馨提示</a></h3>
+                            <p>为提升旅客通行效率，全球主要机场将逐步推行自助安检通道，建议旅客提前准备好登机牌和身份证件...</p>
+                        </div>
+                    </article>
+                    <article class="news-item">
+                        <div class="news-date">
+                            <span class="day">08</span>
+                            <span class="month">OCT</span>
+                        </div>
+                        <div class="news-content">
+                            <h3><a href="#">洲际机场免税店购物指南：最新优惠活动</a></h3>
+                            <p>秋季大促正在进行中，多国名品限时折扣，持联程机票旅客可享受额外积分奖励，详情请点击查看...</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <aside>
+                <div class="faq-section">
+                    <h3 style="margin-bottom: 20px; font-size: 18px;">常见问题</h3>
+                    <div class="faq-item">
+                        <div class="faq-question">洲际机场在哪里？</div>
+                        <div class="faq-answer">洲际机场是一个通用的机场服务概念，涵盖了全球各大国际枢纽机场。您可以在首页搜索栏输入具体的城市或机场名称进行查询。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">如何办理中转手续？</div>
+                        <div class="faq-answer">大多数国际中转旅客无需出境，只需在到达层寻找中转指示牌，跟随指引即可前往中转候机区。部分国家提供过境免签政策。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">行李直挂如何操作？</div>
+                        <div class="faq-answer">请确保在值机时选择“全程行李直挂”选项，并确认下一程航班的行李限额。若遇到问题，请立即联系现场地勤人员。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">机场交通有哪些选择？</div>
+                        <div class="faq-answer">机场通常提供地铁、机场大巴、出租车和网约车服务。我们提供详细的时刻表和票价信息，请参考交通板块。</div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>洲际 Travel</h3>
+                    <p>致力于为全球旅客提供最准确、最便捷的机场信息服务，连接世界，让每一次出发都从容不迫。</p>
+                    <div style="font-size: 24px;">
+                        <!-- 简单的社交图标占位 -->
+                        <span style="margin-right: 15px;">FB</span>
+                        <span style="margin-right: 15px;">TW</span>
+                        <span style="margin-right: 15px;">IG</span>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">服务条款</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">帮助中心</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>热门城市</h4>
+                    <ul>
+                        <li><a href="#">北京首都机场</a></li>
+                        <li><a href="#">上海浦东机场</a></li>
+                        <li><a href="#">香港国际机场</a></li>
+                        <li><a href="#">新加坡樟宜机场</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li>客服热线：400-123-4567</li>
+                        <li>工作时间：24小时</li>
+                        <li>电子邮箱：support@zhqtravel.com</li>
+                        <li>地址：北京市朝阳区航空服务产业园A座</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 洲际 Travel Service. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的 FAQ 手风琴交互
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                item.querySelector('.faq-question').addEventListener('click', function() {
+                    // 关闭其他打开的项
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // 切换当前项
+                    item.classList.toggle('active');
+                });
+            });
+
+            // 简单的搜索框交互反馈
+            const searchBtn = document.querySelector('.hero-search button');
+            const searchInput = document.querySelector('.hero-search input');
+            
+            searchBtn.addEventListener('click', () => {
+                if(searchInput.value.trim() !== "") {
+                    // 模拟跳转
+                    const originalText = searchBtn.innerText;
+                    searchBtn.innerText = "搜索中...";
+                    searchBtn.style.backgroundColor = "#ccc";
+                    setTimeout(() => {
+                        alert("正在跳转至 " + searchInput.value + " 的机场信息页面...");
+                        searchBtn.innerText = originalText;
+                        searchBtn.style.backgroundColor = "";
+                    }, 500);
+                }
+            });
+        });
+    </script>
+</body>
+                      </html>
