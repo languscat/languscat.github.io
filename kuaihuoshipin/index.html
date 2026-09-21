@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="快活视频网 - 提供最新热门短视频、搞笑集锦、生活记录与创意剪辑内容。支持在线浏览、高清播放与一键分享，打造您的专属快乐源泉。">
+    <meta name="keywords" content="快活视频, 短视频, 搞笑视频, 生活记录, 剪辑素材">
+    <title>快活视频-热门搞笑短视频与生活记录分享平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #FF4757;
+            --secondary-color: #2F3542;
+            --accent-color: #FFA502;
+            --bg-color: #F1F2F6;
+            --card-bg: #FFFFFF;
+            --text-main: #2F3542;
+            --text-sub: #747D8C;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+            --border-radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            outline: none;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .grid {
+            display: grid;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 20px;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px 45px 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .search-bar input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-main);
+            font-size: 15px;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 40px 0;
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, #FF6B81 0%, #FF4757 100%);
+            border-radius: var(--border-radius);
+            padding: 60px 40px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-text h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 25px;
+            max-width: 500px;
+        }
+
+        .cta-btn {
+            background-color: white;
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .hero-bg-icon {
+            font-size: 200px;
+            position: absolute;
+            right: -50px;
+            bottom: -50px;
+            opacity: 0.2;
+        }
+
+        /* Categories */
+        .categories {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .category-chip {
+            padding: 8px 20px;
+            background: white;
+            border-radius: 20px;
+            font-size: 14px;
+            color: var(--text-sub);
+            white-space: nowrap;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .category-chip:hover, .category-chip.active {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 10px rgba(255, 71, 87, 0.3);
+        }
+
+        /* Video Grid */
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .video-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: 180px;
+            background-color: #eee;
+            position: relative;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .duration {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .video-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            line-height: 1.4;
+        }
+
+        .video-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+
+        .author {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .author-avatar {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #ddd;
+        }
+
+        .views {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        /* Trending Section */
+        .trending-section {
+            background-color: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            margin-bottom: 50px;
+        }
+
+        .trending-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .trending-item {
+            display: flex;
+            gap: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .trending-item:hover {
+            background-color: #f9f9f9;
+        }
+
+        .rank {
+            font-size: 24px;
+            font-weight: 800;
+            color: #ddd;
+            width: 30px;
+            text-align: center;
+        }
+
+        .rank.top-3 {
+            color: var(--accent-color);
+        }
+
+        .trending-content {
+            flex: 1;
+        }
+
+        .trending-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .trending-meta {
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+
+        /* Features / Why Us */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: #FFF0F1;
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 0 auto 15px;
+        }
+
+        .feature-item h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .feature-item p {
+            font-size: 13px;
+            color: var(--text-sub);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: #a4b0be;
+            padding: 50px 0 20px;
+            margin-top: auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h2 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .search-bar {
+                width: 100%;
+                margin: 0;
+            }
+
+            .hero-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+            }
+
+            .hero-bg-icon {
+                right: -20px;
+                bottom: -20px;
+                font-size: 100px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">快活<span>视频</span></a>
+            <div class="search-bar">
+                <input type="text" placeholder="搜索搞笑视频、生活记录...">
+                <button class="search-btn">🔍</button>
+            </div>
+            <nav class="nav-links">
+                <a href="#" class="active">首页</a>
+                <a href="#">热门推荐</a>
+                <a href="#">分类</a>
+                <a href="#">创作者中心</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-banner">
+                <div class="hero-text">
+                    <h1>记录生活每一个快活瞬间</h1>
+                    <p>汇聚全网最有趣的短视频内容，从搞笑段子到生活技巧，从旅行Vlog到美食制作，随时随地，快乐不停。</p>
+                    <a href="#" class="cta-btn">开始浏览</a>
+                </div>
+                <div class="hero-bg-icon">🎬</div>
+            </div>
+        </section>
+
+        <!-- Categories Filter -->
+        <section class="categories">
+            <div class="category-chip active">全部</div>
+            <div class="category-chip">🔥 搞笑段子</div>
+            <div class="category-chip">✨ 生活记录</div>
+            <div class="category-chip">🎥 创意剪辑</div>
+            <div class="category-chip">🎵 音乐MV</div>
+            <div class="category-chip">🍔 美食制作</div>
+            <div class="category-chip">🐱 宠物萌宠</div>
+        </section>
+
+        <!-- Trending Section -->
+        <section class="trending-section">
+            <div class="section-title">
+                <span>🔥 本周热门榜单</span>
+                <a href="#" style="font-size: 14px; color: var(--primary-color);">查看更多 ></a>
+            </div>
+            <div class="trending-list">
+                <div class="trending-item">
+                    <div class="rank top-3">1</div>
+                    <div class="trending-content">
+                        <div class="trending-title">猫咪的迷惑行为大赏：这真的是猫吗？</div>
+                        <div class="trending-meta">1.2万次播放 · 5分钟前 · 宠物萌宠频道</div>
+                    </div>
+                </div>
+                <div class="trending-item">
+                    <div class="rank top-3">2</div>
+                    <div class="trending-content">
+                        <div class="trending-title">30秒教你做正宗红烧肉，好吃到停不下来</div>
+                        <div class="trending-meta">8,900次播放 · 2小时前 · 美食制作频道</div>
+                    </div>
+                </div>
+                <div class="trending-item">
+                    <div class="rank top-3">3</div>
+                    <div class="trending-content">
+                        <div class="trending-title">这就是所谓的“社死”现场，笑出腹肌</div>
+                        <div class="trending-meta">6,500次播放 · 5小时前 · 搞笑段子频道</div>
+                    </div>
+                </div>
+                <div class="trending-item">
+                    <div class="rank">4</div>
+                    <div class="trending-content">
+                        <div class="trending-title">周末City Walk：发现城市里的隐藏宝藏</div>
+                        <div class="trending-meta">4,200次播放 · 昨天 · 生活记录频道</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Grid -->
+        <section class="section-title">
+            <span>最新上传</span>
+            <div class="flex" style="gap: 10px;">
+                <select style="padding: 5px; border-radius: 4px; border: 1px solid #ddd;">
+                    <option>最新发布</option>
+                    <option>最多播放</option>
+                    <option>最多点赞</option>
+                </select>
+            </div>
+        </section>
+
+        <div class="video-grid">
+            <!-- Video Card 1 -->
+            <article class="video-card">
+                <div class="thumbnail">
+                    <img src="https://picsum.photos/seed/video1/400/300" alt="搞笑视频封面">
+                    <span class="duration">02:15</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="video-title">老板下班后的真实面目，笑死我了！</h3>
+                    <div class="video-info">
+                        <div class="author">
+                            <div class="author-avatar"></div>
+                            <span>职场吐槽君</span>
+                        </div>
+                        <div class="views">👁 12.5万</div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Video Card 2 -->
+            <article class="video-card">
+                <div class="thumbnail">
+                    <img src="https://picsum.photos/seed/video2/400/300" alt="生活记录封面">
+                    <span class="duration">05:30</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="video-title">我的极简独居生活：一个人也要好好吃饭</h3>
+                    <div class="video-info">
+                        <div class="author">
+                            <div class="author-avatar"></div>
+                            <span>小美的厨房</span>
+                        </div>
+                        <div class="views">👁 8,920</div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Video Card 3 -->
+            <article class="video-card">
+                <div class="thumbnail">
+                    <img src="https://picsum.photos/seed/video3/400/300" alt="创意剪辑封面">
+                    <span class="duration">03:45</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="video-title">赛博朋克风格的城市夜景延时摄影</h3>
+                    <div class="video-info">
+                        <div class="author">
+                            <div class="author-avatar"></div>
+                            <span>光影旅行者</span>
+                        </div>
+                        <div class="views">👁 45,000</div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Video Card 4 -->
+            <article class="video-card">
+                <div class="thumbnail">
+                    <img src="https://picsum.photos/seed/video4/400/300" alt="搞笑视频封面">
+                    <span class="duration">01:20</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="video-title">金毛犬的“偷吃”现场，被抓包瞬间破功</h3>
+                    <div class="video-info">
+                        <div class="author">
+                            <div class="author-avatar"></div>
+                            <span>汪星人基地</span>
+                        </div>
+                        <div class="views">👁 22.1万</div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Video Card 5 -->
+            <article class="video-card">
+                <div class="thumbnail">
+                    <img src="https://picsum.photos/seed/video5/400/300" alt="音乐MV封面">
+                    <span class="duration">04:10</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="video-title">治愈系纯音乐：给忙碌一天的自己</h3>
+                    <div class="video-info">
+                        <div class="author">
+                            <div class="author-avatar"></div>
+                            <span>晚安音乐台</span>
+                        </div>
+                        <div class="views">👁 5.6万</div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Video Card 6 -->
+            <article class="video-card">
+                <div class="thumbnail">
+                    <img src="https://picsum.photos/seed/video6/400/300" alt="搞笑视频封面">
+                    <span class="duration">02:50</span>
+                </div>
+                <div class="card-content">
+                    <h3 class="video-title">当程序员第一次尝试做饭，结果...</h3>
+                    <div class="video-info">
+                        <div class="author">
+                            <div class="author-avatar"></div>
+                            <span>代码与咖啡</span>
+                        </div>
+                        <div class="views">👁 33,400</div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <!-- Features / Why Choose Us -->
+        <section class="features">
+            <div class="feature-item">
+                <div class="feature-icon">⚡</div>
+                <h3>极速加载</h3>
+                <p>采用智能CDN加速技术，无论您身处何地，都能秒开视频，畅享丝滑体验。</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">💎</div>
+                <h3>高清画质</h3>
+                <p>支持4K超高清播放，配合杜比音效，还原每一帧精彩细节。</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🛡️</div>
+                <h3>绿色安全</h3>
+                <p>无广告弹窗干扰，纯净浏览环境，保护您的隐私与设备安全。</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>快活视频</h2>
+                    <p>发现快乐，分享生活。我们致力于为用户提供最优质的短视频内容服务。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">平台介绍</a></li>
+                        <li><a href="#">加入我们</a></li>
+                        <li><a href="#">联系方式</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>帮助中心</h4>
+                    <ul>
+                        <li><a href="#">用户协议</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">版权声明</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关注我们</h4>
+                    <ul>
+                        <li><a href="#">微信公众号</a></li>
+                        <li><a href="#">新浪微博</a></li>
+                        <li><a href="#">官方QQ群</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 快活视频网 版权所有 | 本站内容仅供学习交流使用</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
