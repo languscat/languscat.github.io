@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="超强台风卡努实时路径、最新动态、海上打转原因及防御指南。提供气象局权威数据、历史对比及出行安全建议。">
+    <meta name="keywords" content="超强台风“卡努”海上打转,台风卡努路径,台风卡努实时路径,卡努台风最新消息,台风防御指南">
+    <title>超强台风“卡努”海上打转 - 实时路径与防御指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --accent-color: #ff9800;
+            --danger-color: #d32f2f;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-light: #f4f7f9;
+            --white: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.12);
+            --radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .status-badge {
+            background-color: #e3f2fd;
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.05"><path d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/></g></g></svg>');
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .update-time {
+            font-size: 0.9rem;
+            background: rgba(255,255,255,0.2);
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 4px;
+        }
+
+        /* Main Content Grid */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-top: -40px;
+            padding-bottom: 40px;
+        }
+
+        /* Card Styles */
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title h2 {
+            color: var(--text-dark);
+            font-size: 1.25rem;
+        }
+
+        /* Path Visualization */
+        .path-container {
+            width: 100%;
+            height: 350px;
+            background-color: #eef2f5;
+            border: 1px solid #ddd;
+            border-radius: var(--radius);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .path-placeholder {
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .path-placeholder svg {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 15px;
+            animation: spin 10s linear infinite;
+        }
+
+        .path-info {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .info-item {
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .info-item .label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+
+        .info-item .value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        /* Why it spins */
+        .reason-list li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        .reason-list li::before {
+            content: '•';
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+
+        /* Precautions */
+        .precaution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .precaution-item {
+            background: #fff8e1;
+            padding: 15px;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .precaution-item h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: #e65100;
+        }
+
+        .precaution-item p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Sidebar */
+        .sidebar-sticky {
+            position: sticky;
+            top: 90px;
+        }
+
+        .news-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-date {
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            text-align: center;
+            min-width: 45px;
+            height: fit-content;
+        }
+
+        .news-date .day {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .news-content h4 {
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .news-content h4:hover {
+            color: var(--primary-color);
+        }
+
+        .news-content p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            background: #263238;
+            color: #cfd8dc;
+            padding: 40px 0;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--white);
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #37474f;
+            padding-top: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none; /* Simplified for mobile */
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .path-container {
+                height: 250px;
+            }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <span>🌀</span>
+                台风气象通
+            </a>
+            <nav class="nav-links">
+                <a href="#">实时路径</a>
+                <a href="#">预警信息</a>
+                <a href="#">防御指南</a>
+                <a href="#">历史档案</a>
+            </nav>
+            <div class="status-badge">关注中</div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>超强台风“卡努”海上打转</h1>
+            <p>受副热带高压与引导气流影响，卡努路径复杂多变。本站持续为您提供最新路径预测与防灾建议。</p>
+            <div class="update-time">最后更新：2023年8月12日 14:00</div>
+        </div>
+    </section>
+
+    <main class="container main-grid">
+        <!-- Left Column -->
+        <div class="content-area">
+            
+            <!-- Path Section -->
+            <article class="card">
+                <div class="section-title">
+                    <h2>实时路径监测</h2>
+                    <span style="font-size: 0.9rem; color: var(--text-light);">数据来源：中央气象台</span>
+                </div>
+                <div class="path-container">
+                    <!-- CSS only visual representation of a spinning storm -->
+                    <div class="path-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                            <circle cx="12" cy="12" r="5" stroke="#ff9800" stroke-width="3"/>
+                        </svg>
+                        <p>路径模拟图</p>
+                        <p style="font-size: 0.8rem; margin-top:5px;">点击查看高清雷达图</p>
+                    </div>
+                </div>
+                <div class="path-info">
+                    <div class="info-item">
+                        <div class="label">中心气压</div>
+                        <div class="value">925 hPa</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="label">最大风力</div>
+                        <div class="value">16级 (62m/s)</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="label">当前位置</div>
+                        <div class="value">东海北部</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="label">移动方向</div>
+                        <div class="value">西北转偏北</div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Why it spins Section -->
+            <article class="card">
+                <div class="section-title">
+                    <h2>为何“海上打转”？</h2>
+                </div>
+                <p style="margin-bottom: 15px; color: var(--text-light);">超强台风“卡努”在东海海域长时间徘徊，主要原因在于大气环流形势的复杂性：</p>
+                <ul class="reason-list">
+                    <li><strong>引导气流微弱：</strong> 台风北侧的副热带高压主体偏东，未能形成一条强有力的西北向引导气流，导致卡努移动速度缓慢。</li>
+                    <li><strong>多重系统博弈：</strong> 台风南侧的西南季风与北侧的副高之间形成了“鞍形场”结构，台风夹在中间，左右摇摆，路径不确定性增加。</li>
+                    <li><strong>海温条件适宜：</strong> 东海海域海温较高，能量补给充足，使得台风强度维持并具备较强的自我维持能力，不易迅速减弱。</li>
+                </ul>
+            </article>
+
+            <!-- Precautions Section -->
+            <article class="card">
+                <div class="section-title">
+                    <h2>公众防御指南</h2>
+                </div>
+                <div class="precaution-grid">
+                    <div class="precaution-item">
+                        <h3>户外作业</h3>
+                        <p>暂停高空、水上作业，加固门窗、围板、棚架、广告牌等易被风吹动的搭建物。</p>
+                    </div>
+                    <div class="precaution-item">
+                        <h3>海上航运</h3>
+                        <p>回港避风船只切勿强行航行，沿海养殖户需加固养殖设施，转移人员至安全地带。</p>
+                    </div>
+                    <div class="precaution-item">
+                        <h3>行车安全</h3>
+                        <p>尽量避免在台风影响期间驾车出行。如遇积水路段，切勿强行涉水，应绕行。</p>
+                    </div>
+                    <div class="precaution-item">
+                        <h3>居家防范</h3>
+                        <p>储备必要的生活物资（如饮用水、食物、药品），检查电路、煤气，防止漏电漏气。</p>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+        <!-- Right Column -->
+        <aside class="sidebar">
+            <div class="sidebar-sticky">
+                <div class="card">
+                    <div class="section-title">
+                        <h2>最新动态</h2>
+                    </div>
+                    <div class="news-list">
+                        <a href="#" class="news-item">
+                            <div class="news-date">
+                                <span class="day">12</span>
+                                <span class="month">14:00</span>
+                            </div>
+                            <div class="news-content">
+                                <h4>台风“卡努”将于今日夜间开始转向偏北方向移动</h4>
+                                <p>路径略有西调，未来三天对浙江沿海地区有较大风雨影响...</p>
+                            </div>
+                        </a>
+                        <a href="#" class="news-item">
+                            <div class="news-date">
+                                <span class="day">12</span>
+                                <span class="month">10:30</span>
+                            </div>
+                            <div class="news-content">
+                                <h4>浙江沿海启动防台风应急响应，多地发布停课通知</h4>
+                                <p>根据气象预报，部分学校将暂停线下教学，具体安排请关注...</p>
+                            </div>
+                        </a>
+                        <a href="#" class="news-item">
+                            <div class="news-date">
+                                <span class="day">11</span>
+                                <span class="month">20:00</span>
+                            </div>
+                            <div class="news-content">
+                                <h4>气象专家解读：卡努“打转”是典型的季节性台风特征</h4>
+                                <p>虽然路径曲折，但总体向东北方向移动的趋势未变，请市民...</p>
+                            </div>
+                        </a>
+                    </div>
+                    <a href="#" style="display:block; margin-top:20px; text-align:center; color:var(--primary-color); font-weight:600;">查看全部历史消息 &rarr;</a>
+                </div>
+
+                <div class="card">
+                    <div class="section-title">
+                        <h2>相关科普</h2>
+                    </div>
+                    <ul style="font-size: 0.9rem; color: var(--text-light);">
+                        <li style="margin-bottom:10px;"><a href="#">台风眼是如何形成的？</a></li>
+                        <li style="margin-bottom:10px;"><a href="#">超强台风与强台风的区别</a></li>
+                        <li style="margin-bottom:10px;"><a href="#">如何识别台风预警信号？</a></li>
+                        <li style="margin-bottom:10px;"><a href="#">台风登陆后为何会减弱？</a></li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>关于本站</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.6;">台风气象通致力于提供及时、准确、权威的气象资讯与防灾科普服务，守护每一位用户的安全。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">实时监测</a></li>
+                        <li><a href="#">历史台风</a></li>
+                        <li><a href="#">气象科普</a></li>
+                        <li><a href="#">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>免责声明</h4>
+                    <p style="font-size: 0.85rem; line-height: 1.5;">本站数据仅供参考，实际天气情况请以当地气象部门发布的最新预警信息为准。</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 台风气象通 版权所有
+            </div>
+        </div>
+    </footer>
+
+</body>
+                  </html>
