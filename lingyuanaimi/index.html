@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="铃原爱蜜莉作品名单与作品合集，包含漫画、动画及相关衍生内容介绍，提供详细的分类浏览与阅读指南。">
+    <meta name="keywords" content="铃原爱蜜莉作品名单,铃原爱蜜莉,动漫作品,漫画列表">
+    <title>铃原爱蜜莉作品名单 - 完整作品合集与阅读指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #ff4d8a;
+            --secondary-color: #6a11cb;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --border-radius: 12px;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(106, 17, 203, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        .nav-container {
+            background: var(--card-bg);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-main);
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background-color: rgba(255, 77, 138, 0.1);
+            color: var(--primary-color);
+        }
+
+        /* Layout */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 20px var(--spacing-unit);
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 40px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* Hero / Intro */
+        .intro-box {
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            margin-bottom: 30px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .intro-icon {
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .intro-text h2 {
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .intro-text p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .tag-list {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background-color: #f0f0f0;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Grid Layout for Works */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .work-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .work-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .work-cover {
+            width: 100%;
+            height: 180px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 3rem;
+            position: relative;
+        }
+
+        .work-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .work-info {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .work-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .work-meta {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .work-desc {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .work-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            flex: 1;
+        }
+
+        .btn-primary:hover {
+            background: #e0407c;
+        }
+
+        .btn-outline {
+            border: 1px solid #ddd;
+            color: var(--text-secondary);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* Category Filter */
+        .filter-bar {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            background: white;
+            color: var(--text-secondary);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Detailed List View */
+        .detail-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .detail-item {
+            background: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .detail-year {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .detail-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .detail-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 40px 0;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .footer-content p {
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        .footer-links a {
+            margin: 0 10px;
+            color: #bdc3c7;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .nav-links {
+                display: none; /* Simplified for mobile */
+            }
+            
+            .detail-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .detail-year {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>铃原爱蜜莉作品名单</h1>
+        <p>收录铃原爱蜜莉主要活跃期的代表作品、漫画改编及相关衍生内容，提供详尽的阅读与观看指南。</p>
+    </div>
+</header>
+
+<div class="nav-container">
+    <nav>
+        <div style="font-weight:bold; color:var(--primary-color);">作品大全</div>
+        <div class="nav-links">
+            <a href="#latest" class="active">最新收录</a>
+            <a href="#categories">分类浏览</a>
+            <a href="#timeline">时间线</a>
+            <a href="#faq">常见问题</a>
+        </div>
+    </nav>
+</div>
+
+<main class="container">
+
+    <!-- Intro Section -->
+    <section class="intro-box">
+        <div class="intro-icon">✦</div>
+        <div class="intro-text">
+            <h2>关于铃原爱蜜莉</h2>
+            <p>铃原爱蜜莉是活跃于二次元领域的知名创作者，以其独特的画风和鲜明的人物塑造著称。本页整理了其核心作品名单，帮助读者快速了解其创作历程与代表作。</p>
+            <div class="tag-list">
+                <span class="tag">漫画创作</span>
+                <span class="tag">角色设计</span>
+                <span class="tag">同人作品</span>
+                <span class="tag">衍生动画</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Filter -->
+    <section id="categories">
+        <div class="section-header">
+            <h2 class="section-title">作品分类</h2>
+        </div>
+        <div class="filter-bar">
+            <button class="filter-btn active">全部作品</button>
+            <button class="filter-btn">漫画连载</button>
+            <button class="filter-btn">单行本</button>
+            <button class="filter-btn">短篇集</button>
+            <button class="filter-btn">插画集</button>
+        </div>
+    </section>
+
+    <!-- Grid Layout: Featured Works -->
+    <section id="latest">
+        <div class="section-header">
+            <h2 class="section-title">精选代表作品</h2>
+        </div>
+        <div class="works-grid">
+            <!-- Work 1 -->
+            <article class="work-card">
+                <div class="work-cover">
+                    <img src="https://picsum.photos/seed/manga1/400/300" alt="作品封面占位符">
+                </div>
+                <div class="work-info">
+                    <h3 class="work-title">星夜下的约定</h3>
+                    <div class="work-meta">
+                        <span>漫画</span>
+                        <span>连载中</span>
+                    </div>
+                    <p class="work-desc">讲述在异能学院中，主角与铃原爱蜜莉笔下角色共同成长的奇幻故事，画风细腻，情感真挚。</p>
+                    <div class="work-actions">
+                        <a href="#" class="btn btn-primary">阅读章节</a>
+                        <a href="#" class="btn btn-outline">详情</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Work 2 -->
+            <article class="work-card">
+                <div class="work-cover">
+                    <img src="https://picsum.photos/seed/manga2/400/300" alt="作品封面占位符">
+                </div>
+                <div class="work-info">
+                    <h3 class="work-title">夏日回响</h3>
+                    <div class="work-meta">
+                        <span>短篇集</span>
+                        <span>已完结</span>
+                    </div>
+                    <p class="work-desc">收录了铃原爱蜜莉早期的多个短篇故事，展现了作者从青涩到成熟的画风演变过程。</p>
+                    <div class="work-actions">
+                        <a href="#" class="btn btn-primary">查看列表</a>
+                        <a href="#" class="btn btn-outline">详情</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Work 3 -->
+            <article class="work-card">
+                <div class="work-cover">
+                    <img src="https://picsum.photos/seed/manga3/400/300" alt="作品封面占位符">
+                </div>
+                <div class="work-info">
+                    <h3 class="work-title">绯红之翼</h3>
+                    <div class="work-meta">
+                        <span>插画集</span>
+                        <span>2023</span>
+                    </div>
+                    <p class="work-desc">以“绯红之翼”为主题的角色原画集，收录了超过50幅精美设定图与彩色插画。</p>
+                    <div class="work-actions">
+                        <a href="#" class="btn btn-primary">预览画集</a>
+                        <a href="#" class="btn btn-outline">详情</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Work 4 -->
+            <article class="work-card">
+                <div class="work-cover">
+                    <img src="https://picsum.photos/seed/manga4/400/300" alt="作品封面占位符">
+                </div>
+                <div class="work-info">
+                    <h3 class="work-title">迷宫回廊</h3>
+                    <div class="work-meta">
+                        <span>漫画</span>
+                        <span>连载中</span>
+                    </div>
+                    <p class="work-desc">结合了推理与冒险元素的作品，迷雾缭绕的迷宫中隐藏着关于铃原爱蜜莉角色的秘密。</p>
+                    <div class="work-actions">
+                        <a href="#" class="btn btn-primary">开始阅读</a>
+                        <a href="#" class="btn btn-outline">详情</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Timeline / List View -->
+    <section id="timeline">
+        <div class="section-header">
+            <h2 class="section-title">作品时间线</h2>
+        </div>
+        <div class="detail-list">
+            <div class="detail-item">
+                <div class="detail-year">2023</div>
+                <div class="detail-content">
+                    <h3>《绯红之翼》原画集发布</h3>
+                    <p>铃原爱蜜莉发布年度大型原画集，展示了其在角色设计领域的深厚功底，深受粉丝好评。</p>
+                </div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-year">2022</div>
+                <div class="detail-content">
+                    <h3>《夏日回响》短篇集完结</h3>
+                    <p>历时两年的短篇创作计划圆满结束，该作品集被多家平台评为年度最佳短篇漫画之一。</p>
+                </div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-year">2021</div>
+                <div class="detail-content">
+                    <h3>《星夜下的约定》正式连载</h3>
+                    <p>铃原爱蜜莉的首部长篇连载作品上线，确立了其在主流漫画市场的地位。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="section-header">
+            <h2 class="section-title">阅读指南与常见问题</h2>
+        </div>
+        <div style="background: white; padding: 20px; border-radius: 12px; border-left: 4px solid var(--primary-color);">
+            <h3 style="margin-bottom: 10px;">Q: 铃原爱蜜莉的作品在哪里可以阅读？</h3>
+            <p style="margin-bottom: 20px; color: #555;">本站收录的作品均可在官方合作平台或授权阅读站进行阅读，部分作品支持移动端阅读。</p>
+            
+            <h3 style="margin-bottom: 10px;">Q: 如何获取铃原爱蜜莉的最新动态？</h3>
+            <p style="margin-bottom: 20px; color: #555;">建议关注铃原爱蜜莉的官方社交媒体账号，或定期查看本站的“最新收录”栏目。</p>
+
+            <h3 style="margin-bottom: 10px;">Q: 作品的版权归属是怎样的？</h3>
+            <p style="color: #555;">所有作品版权归原作者及所属出版社所有，本站仅提供作品信息整理与导航服务。</p>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container footer-content">
+        <p>本站仅作为作品信息整理与导航平台，不提供任何盗版资源下载。</p>
+        <p>© 2023 铃原爱蜜莉作品名单 - 阅读指南站</p>
+        <div class="footer-links">
+            <a href="#">关于我们</a>
+            <a href="#">免责声明</a>
+            <a href="#">联系方式</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
